@@ -13,11 +13,11 @@ dbReq.onupgradeneeded = (e) => {
   db = e.target.result;
 
   db.createObjectStore("books", {
-    autoIncrement: true,
+    autoIncrement: false,
   });
 
   db.createObjectStore("authors", {
-    autoIncrement: true,
+    autoIncrement: false,
   });
 };
 
