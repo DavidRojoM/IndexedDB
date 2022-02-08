@@ -1,0 +1,39 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+h1,h2,h3{
+    text-align: center;
+}
+body{
+    height: 100vh;
+}
+main{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+
+section{
+    height: 50vh;
+    padding: 2rem;
+}
+
+main form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+section:nth-child(1){
+    background-color: lightcoral;
+}
+section:nth-child(2){
+    background-color: lightblue;
+}
+section:nth-child(3){
+    background-color: lightgreen;
+}
+section:nth-child(4){
+    background-color: lightsalmon;
+}
