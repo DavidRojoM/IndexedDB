@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS-NO-DEXIE</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/dom.elements.js" defer></script>
+    <script src="js/db.js" defer></script>
+    <script src="js/services/idb.service.js" defer></script>
+    <script src="js/views/main.view.js" defer></script>
+    <script src="js/controllers/main.controller.js" defer></script>
+</head>
+<body>
+<main>
+    <section>
+        <header>
+            <h2>Add Book</h2>
+        </header>
+        <form id="addBookForm">
+            <label for="bookName">Book name</label><input type="text" name="name" id="bookName">
+            <label for="date">Date</label><input type="date" name="date" id="date">
+            <label for="author">Author</label><input type="text" name="author" id="author">
+            <button type="submit">Add</button>
+        </form>
+    </section>
+    <section>
+        <header>
+            <h2>Add Author</h2>
+        </header>
+        <form id="addAuthorForm">
+            <label for="authorName">Name</label><input type="text" name="name" id="authorName">
+            <button type="submit">Add</button>
+        </form>
+    </section>
+    <section>
+        <button id="showBooks">Show Books</button>
+        <ul id="booksList"></ul>
+    </section>
+    <section>
+        <button id="showAuthors">Show Authors</button>
+        <ul id="authorsList"></ul>
+    </section>
+</main>
+</body>
+</html>
