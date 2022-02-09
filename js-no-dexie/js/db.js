@@ -1,5 +1,5 @@
 let db;
-const dbReq = indexedDB.open("BookShop");
+const dbReq = indexedDB.open("BookShop", 1);
 
 dbReq.onsuccess = (e) => {
   db = e.target.result;
@@ -12,13 +12,18 @@ dbReq.onerror = (e) => {
 dbReq.onupgradeneeded = (e) => {
   db = e.target.result;
 
-  db.createObjectStore("books", {
+  const bookStore = db.createObjectStore("books", {
     autoIncrement: false,
   });
 
-  db.createObjectStore("authors", {
+  bookStore.createIndex("searchName", "name"); // SI no funciona poner unique en tercer parametro
+  bookStore.createIndex("searchDate", "date");
+  bookStore.createIndex("searchAuthorName", "author.name");
+
+  const authorsStore = db.createObjectStore("authors", {
     autoIncrement: false,
   });
+  authorsStore.createIndex("searchName", "name");
 };
 
 //HANDLERS
