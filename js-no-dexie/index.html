@@ -27,19 +27,67 @@
         </form>
     </section>
     <section>
-        <header>
+        <article>
             <h2>Add Author</h2>
+            <form id="addAuthorForm">
+                <label>Name</label><input type="text" name="name">
+                <button type="submit">Add</button>
+            </form>
+        </article>
+        <article>
+            <h2>Update Author</h2>
+            <form id="updateAuthorForm">
+                <label>Name</label><input type="text" name="name">
+                <label>New name</label><input type="text" name="newName">
+                <button type="submit">Add</button>
+            </form>
+        </article>
+        <article>
+            <h2>Delete Author</h2>
+            <form id="deleteAuthorForm">
+                <label>Name</label><input type="text" name="name">
+                <button type="submit">Add</button>
+            </form>
+        </article>
+    </section>
+    <section>
+        <header>
+            <h2>Book List</h2>
         </header>
-        <form id="addAuthorForm">
-            <label for="authorName">Name</label><input type="text" name="name" id="authorName">
-            <button type="submit">Add</button>
-        </form>
+        <article>
+            <h3>Show all books</h3>
+            <button id="showBooks">Show</button>
+            <ul id="booksList"></ul>
+        </article>
+        <article>
+            <h3>Show books by name</h3>
+            <form id="booksByNameForm">
+                <label for="bookNameToFind">Name</label><input type="text" name="name" id="bookNameToFind">
+                <button type="submit">Show</button>
+            </form>
+        </article>
+        <article>
+            <h3>Show books by date range</h3>
+            <form id="booksByDate">
+                <label for="dateFrom">From</label><input type="date" name="from" id="dateFrom">
+                <label for="dateTo">To</label><input type="date" name="to" id="dateTo">
+
+                <button type="submit">Show</button>
+            </form>
+        </article>
+        <article>
+            <h3>Show books by author name</h3>
+            <form id="booksByAuthorNameForm">
+                <label for="authorNameToFind">Name</label><input type="text" name="name" id="authorNameToFind">
+                <button type="submit">Show</button>
+            </form>
+        </article>
+
     </section>
     <section>
-        <button id="showBooks">Show Books</button>
-        <ul id="booksList"></ul>
-    </section>
-    <section>
+        <header>
+            <h2>Authors List</h2>
+        </header>
         <button id="showAuthors">Show Authors</button>
         <ul id="authorsList"></ul>
     </section>
