@@ -21,3 +21,11 @@ function resetAddAuthorForm() {
 function resetAddBookForm() {
   domElements.$addBookForm.reset();
 }
+
+function resetUpdateAuthorForm() {
+  domElements.$updateAuthorForm.reset();
+}
+
+function resetDeleteAuthorForm() {
+  domElements.$deleteAuthorForm.reset();
+}
