@@ -55,3 +55,70 @@ function findAllBooks() {
   const store = transaction.objectStore("books");
   return store.getAll();
 }
+
+function findBookByName(name) {
+  const transaction = db.transaction(["books"], "readonly");
+  const store = transaction.objectStore("books");
+  const index = store.index("searchName");
+  return index.get(name);
+}
+
+function findBookByDate(from, to) {
+  const dateRange = IDBKeyRange.bound(from, to);
+  const transaction = db.transaction(["books"], "readonly");
+  const store = transaction.objectStore("books");
+  const index = store.index("searchDate");
+  return index.getAll(dateRange);
+}
+
+function findBookByAuthorName(name) {
+  const transaction = db.transaction(["books"], "readonly");
+  const store = transaction.objectStore("books");
+  const index = store.index("searchAuthorName");
+  return index.get(name);
+}
+
+function deleteAuthor(name) {
+  const transaction = db.transaction(["authors", "books"], "readwrite");
+  const authorsStore = transaction.objectStore("authors");
+  const booksStore = transaction.objectStore("books");
+
+  const authorsIndex = authorsStore.index("searchName");
+  const booksIndex = booksStore.index("searchAuthorName");
+
+  authorsIndex.getAllKeys(name).onsuccess = (e) => {
+    for (const result of e.target.result) {
+      console.log("clave", result);
+      authorsStore.delete(result);
+    }
+  };
+  booksIndex.getAllKeys(name).onsuccess = (e) => {
+    for (const result of e.target.result) {
+      booksStore.delete(result);
+    }
+  };
+}
+
+function updateAuthor(name, newName) {
+  const transaction = db.transaction(["authors", "books"], "readwrite");
+  const authorsStore = transaction.objectStore("authors");
+  const booksStore = transaction.objectStore("books");
+
+  const authorsIndex = authorsStore.index("searchName");
+  const booksIndex = booksStore.index("searchAuthorName");
+  let newAuthor = {
+    name: newName,
+  };
+  authorsIndex.getAllKeys(name).onsuccess = (e) => {
+    for (const authorId of e.target.result) {
+      newAuthor.id = authorId;
+      authorsStore.put(newAuthor, authorId);
+    }
+  };
+  booksIndex.getAll(name).onsuccess = (e) => {
+    for (const book of e.target.result) {
+      book.author = newAuthor;
+      booksStore.put(book, book.id);
+    }
+  };
+}
