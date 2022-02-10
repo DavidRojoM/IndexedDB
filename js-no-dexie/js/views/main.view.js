@@ -6,8 +6,14 @@ function renderAuthors(authors) {
   }
 }
 
-function renderBooks(books) {
-  const booksContainer = domElements.$booksList;
+function renderBooks(books, field = "all") {
+  const containers = {
+    all: domElements.$booksList,
+    name: domElements.$booksListByName,
+    date: domElements.$booksListByDate,
+    author: domElements.$booksListByAuthor,
+  };
+  const booksContainer = containers[field];
   booksContainer.innerHTML = "";
   for (const { id, name, date, author } of books) {
     booksContainer.innerHTML += `<li>Id=> ${id}<br>Name=> ${name}<br>Date=> ${date}<br>Author=> ${author.name}</li>`;

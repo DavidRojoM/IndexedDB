@@ -30,9 +30,13 @@ function findOneAuthor(id) {
 function addBook(value) {
   const authorRequest = findOneAuthor(value.author);
   authorRequest.onsuccess = (e) => {
+    const guardAuthor = {
+      id: "-1",
+      name: "anonymous",
+    };
     const book = {
       ...value,
-      author: e.target.result,
+      author: e.target.result || guardAuthor,
       id: generateRandomId(),
     };
     const transaction = db.transaction(["books"], "readwrite");
@@ -60,7 +64,7 @@ function findBookByName(name) {
   const transaction = db.transaction(["books"], "readonly");
   const store = transaction.objectStore("books");
   const index = store.index("searchName");
-  return index.get(name);
+  return index.getAll(name);
 }
 
 function findBookByDate(from, to) {
@@ -75,7 +79,7 @@ function findBookByAuthorName(name) {
   const transaction = db.transaction(["books"], "readonly");
   const store = transaction.objectStore("books");
   const index = store.index("searchAuthorName");
-  return index.get(name);
+  return index.getAll(name);
 }
 
 function deleteAuthor(name) {

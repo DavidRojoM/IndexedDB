@@ -16,7 +16,7 @@ dbReq.onupgradeneeded = (e) => {
     autoIncrement: false,
   });
 
-  bookStore.createIndex("searchName", "name"); // SI no funciona poner unique en tercer parametro
+  bookStore.createIndex("searchName", "name");
   bookStore.createIndex("searchDate", "date");
   bookStore.createIndex("searchAuthorName", "author.name");
 
@@ -25,5 +25,3 @@ dbReq.onupgradeneeded = (e) => {
   });
   authorsStore.createIndex("searchName", "name");
 };
-
-//HANDLERS

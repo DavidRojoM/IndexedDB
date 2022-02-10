@@ -79,6 +79,7 @@ function findBookByNameHandler(e) {
   const request = findBookByName(name);
   request.onsuccess = (e) => {
     console.log(e.target.result);
+    renderBooks(e.target.result, "name");
   };
   request.onerror = (e) => {
     throw new Error(`Book: unable to find by name: ${e.target.errorCode}`);
@@ -92,6 +93,7 @@ function findBookByDateHandler(e) {
   const request = findBookByDate(from, to);
   request.onsuccess = (e) => {
     console.log(e.target.result);
+    renderBooks(e.target.result, "date");
   };
   request.onerror = (e) => {
     throw new Error(
@@ -107,6 +109,7 @@ function findBookByAuthorNameHandler(e) {
   const request = findBookByAuthorName(name);
   request.onsuccess = (e) => {
     console.log(e.target.result);
+    renderBooks(e.target.result, "author");
   };
   request.onerror = (e) => {
     throw new Error(

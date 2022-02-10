@@ -39,14 +39,14 @@
             <form id="updateAuthorForm">
                 <label>Name</label><input type="text" name="name">
                 <label>New name</label><input type="text" name="newName">
-                <button type="submit">Add</button>
+                <button type="submit">Update</button>
             </form>
         </article>
         <article>
             <h2>Delete Author</h2>
             <form id="deleteAuthorForm">
                 <label>Name</label><input type="text" name="name">
-                <button type="submit">Add</button>
+                <button type="submit">Delete</button>
             </form>
         </article>
     </section>
@@ -65,6 +65,8 @@
                 <label for="bookNameToFind">Name</label><input type="text" name="name" id="bookNameToFind">
                 <button type="submit">Show</button>
             </form>
+            <ul id="booksListByName"></ul>
+
         </article>
         <article>
             <h3>Show books by date range</h3>
@@ -74,6 +76,8 @@
 
                 <button type="submit">Show</button>
             </form>
+            <ul id="booksListByDate"></ul>
+
         </article>
         <article>
             <h3>Show books by author name</h3>
@@ -81,8 +85,8 @@
                 <label for="authorNameToFind">Name</label><input type="text" name="name" id="authorNameToFind">
                 <button type="submit">Show</button>
             </form>
+            <ul id="booksListByAuthor"></ul>
         </article>
-
     </section>
     <section>
         <header>
