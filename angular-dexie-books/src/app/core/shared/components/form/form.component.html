@@ -1,0 +1,8 @@
+<form action="" *ngIf="option==='authors'; else books">
+  authors
+</form>
+<ng-template #books>
+  <form action="">
+    books
+  </form>
+</ng-template>
