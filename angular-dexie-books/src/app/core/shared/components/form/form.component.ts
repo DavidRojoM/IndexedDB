@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { formConfig } from './form.config';
 
 @Component({
@@ -9,8 +9,18 @@ import { formConfig } from './form.config';
 })
 export class FormComponent implements OnInit {
   @Input() option!: 'authors' | 'books';
-  form = this.fb.group({ ...formConfig[this.option] });
+  @Input() authors!: any;
+  @Input() authorToUpdate: any;
+  @Output() onSubmit = new EventEmitter<any>();
+  public form!: FormGroup;
   constructor(private readonly fb: FormBuilder) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.form = this.fb.group({ ...formConfig[this.option] });
+  }
+
+  public action() {
+    this.onSubmit.emit(this.form.value);
+    this.form.reset();
+  }
 }

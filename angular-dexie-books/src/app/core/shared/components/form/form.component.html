@@ -1,8 +1,15 @@
-<form action="" *ngIf="option==='authors'; else books">
-  authors
+<form *ngIf="option==='authors'; else books" [formGroup]="form" (submit)="action()">
+  <input type="text" name="name" id="authorName" formControlName="authorName">
+  <button type="submit">{{ authorToUpdate?'Add Book':'Update Author' }}</button>
 </form>
+
 <ng-template #books>
-  <form action="">
-    books
+  <form [formGroup]="form" (submit)="action()">
+    <input type="text" name="name" id="bookName" formControlName="bookName">
+    <input type="date" name="date" id="date" formControlName="date">
+    <select name="author" id="author" formControlName="authors" multiple>
+      <option *ngFor="let author of authors | async" [value]="author">{{ author.name }}</option>
+    </select>
+    <button type="submit">Add Book</button>
   </form>
 </ng-template>
