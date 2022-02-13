@@ -1,0 +1,18 @@
+<div *ngIf="option==='books';else authors">
+  <div *ngFor="let book of data | async">
+    <p>{{book.id}}</p>
+    <p>{{book.name}}</p>
+    <p>{{book.date}}</p>
+    <p>{{book.authors | json}}</p>
+    <button (click)="deleteBook(book.id)">Eliminar</button>
+  </div>
+</div>
+
+<ng-template #authors>
+  <div *ngFor="let author of data | async">
+    <p>{{author.id}}</p>
+    <p>{{author.name}}</p>
+    <button (click)="deleteAuthor(author.id)">Delete</button>
+    <button (click)="updateAuthor(author)">Update</button>
+  </div>
+</ng-template>
