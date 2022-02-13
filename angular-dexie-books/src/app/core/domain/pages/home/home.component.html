@@ -1,2 +1,26 @@
-<app-form [option]="'authors'"></app-form>
-<app-form [option]="'books'"></app-form>
+<section class="add-authors-section">
+  <h3>Add an author</h3>
+  <app-form [option]="'authors'" (onSubmit)="addAuthorHandler($event)"></app-form>
+</section>
+<section class="add-books-section">
+  <h3>Add a book</h3>
+  <app-form [authors]="availableAuthors" [option]="'books'" (onSubmit)="addBookHandler($event)"></app-form>
+</section>
+<section class="add-authors-section" *ngIf="authorToUpdate">
+  <h3>Update an author</h3>
+  <app-form [option]="'authors'" (onSubmit)="updateAuthorHandler($event)"></app-form>
+</section>
+<section class="authors-list">
+  <h3>Authors</h3>
+  <app-finder [options]="finderConfig.findAllAuthors" (onFind)="find($event)"></app-finder>
+  <app-finder [options]="finderConfig.findAuthorsByName" (onFind)="find($event)"></app-finder>
+  <app-list [option]="'authors'" [data]="authors" (action)="deleteHandler($event)" (onAuthor)="setAuthorToUpdate($event)"></app-list>
+</section>
+<section class="books-list">
+  <h3>Books</h3>
+  <app-finder [options]="finderConfig.findAllBooks" (onFind)="find($event)"></app-finder>
+  <app-finder [options]="finderConfig.findBooksByName" (onFind)="find($event)"></app-finder>
+  <app-finder [options]="finderConfig.findBooksByAuthor" (onFind)="find($event)"></app-finder>
+  <app-finder [options]="finderConfig.findBooksByDate" (onFind)="find($event)"></app-finder>
+  <app-list [option]="'books'" [data]="books" (action)="deleteHandler($event)"></app-list>
+</section>
