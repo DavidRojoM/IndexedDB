@@ -2,10 +2,10 @@ import { Validators } from '@angular/forms';
 
 export const formConfig = {
   authors: {
-    name: ['', [Validators.required]],
+    authorName: ['', [Validators.required]],
   },
   books: {
-    name: ['', [Validators.required]],
+    bookName: ['', [Validators.required]],
     date: ['', [Validators.required]],
     authors: ['', [Validators.required]],
   },
