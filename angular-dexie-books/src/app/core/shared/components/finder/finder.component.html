@@ -1,0 +1,33 @@
+<form [ngSwitch]="options.type" (submit)="submit()" [formGroup]="form">
+<ng-container *ngSwitchCase="'authors'">
+  <div [ngSwitch]="options.findBy">
+    <ng-container *ngSwitchCase="'all'">
+      <button type="submit">Show all authors</button>
+    </ng-container>
+    <ng-container *ngSwitchCase="'name'">
+      <input type="text" name="name" placeholder="Author name..." formControlName="name">
+      <button type="submit">Show all authors by name</button>
+    </ng-container>
+  </div>
+</ng-container>
+  <ng-container *ngSwitchCase="'books'">
+    <div [ngSwitch]="options.findBy">
+      <ng-container *ngSwitchCase="'all'">
+        <button>Show all books</button>
+      </ng-container>
+      <ng-container *ngSwitchCase="'name'">
+        <input type="text" name="name" placeholder="Book name..." formControlName="name">
+        <button>Find books by name</button>
+      </ng-container>
+      <ng-container *ngSwitchCase="'authorName'">
+        <input type="text" name="name" placeholder="Author Name..." formControlName="name">
+        <button>Find books by author</button>
+      </ng-container>
+      <ng-container *ngSwitchCase="'date'">
+        <input type="date" name="from" placeholder="from" formControlName="from">
+        <input type="date" name="to" placeholder="to" formControlName="to">
+        <button>Find books by date range</button>
+      </ng-container>
+    </div>
+  </ng-container>
+</form>
