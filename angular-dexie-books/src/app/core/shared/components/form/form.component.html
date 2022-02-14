@@ -1,6 +1,6 @@
 <form *ngIf="option==='authors'; else books" [formGroup]="form" (submit)="action()">
   <input type="text" name="name" id="authorName" formControlName="authorName">
-  <button type="submit">{{ authorToUpdate?'Add Book':'Update Author' }}</button>
+  <button type="submit">Send</button>
 </form>
 
 <ng-template #books>
